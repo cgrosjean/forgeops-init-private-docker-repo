@@ -23,12 +23,7 @@
                 },
                 {
                     "source" : "telephoneNumber",
-                    "target" : "telephoneNumber",
-                    "condition" : {
-                        "type" : "text/javascript",
-                        "globals" : { },
-                        "source" : "!!object.telephoneNumber"
-                    }
+                    "target" : "telephoneNumber"
                 },
                 {
                     "source" : "sn",
@@ -81,7 +76,8 @@
             "links" : "systemLdapAccounts_managedUser",
             "onCreate" : {
                 "type" : "text/javascript",
-                "source" : "target.dn = 'uid=' + source.userName + ',ou=People,dc=openam,dc=forgerock,dc=org';"
+                "globals" : { },
+                "source" : "target.dn = 'uid=' + source.userName + ',&{userstore.basecontext}';"
             },
             "properties" : [
                 {
@@ -134,6 +130,15 @@
                     "condition" : {
                         "type" : "text/javascript",
                         "source" : "!!object.telephoneNumber"
+                    }
+                },
+                {
+                    "target" : "dn",
+                    "source" : "userName",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "globals" : { },
+                        "source" : "\"uid=\" + source + \",&{userstore.basecontext}\""
                     }
                 }
             ],

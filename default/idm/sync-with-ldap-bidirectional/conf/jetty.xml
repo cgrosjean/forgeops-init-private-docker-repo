@@ -2,7 +2,7 @@
 <!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
 <!--
   Copyright 2015-2017 ForgeRock AS. All Rights Reserved
- 
+
   Use of this code requires a commercial software license with ForgeRock AS.
   or with one of its affiliates. All use shall be exclusively subject
   to such license between the licensee and ForgeRock AS.
@@ -31,19 +31,23 @@
         </New>
     </Arg>-->
 
-    <New id="httpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
+    <New id="httpSimpleConfig" class="org.eclipse.jetty.server.HttpConfiguration">
         <!-- remove Server header from HTTP responses, to prevent leaking server-type/version -->
         <Set name="sendServerVersion">false</Set>
         <Set name="outputBufferSize">32768</Set>
         <Set name="requestHeaderSize">8192</Set>
         <Set name="responseHeaderSize">8192</Set>
+    </New>
+
+    <New id="httpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
+        <Arg><Ref refid="httpSimpleConfig"/></Arg>
         <Call name="addCustomizer">
             <Arg><New class="org.eclipse.jetty.server.ForwardedRequestCustomizer"/></Arg>
         </Call>
     </New>
 
     <New id="tlsHttpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
-        <Arg><Ref refid="httpConfig"/></Arg>
+        <Arg><Ref refid="httpSimpleConfig"/></Arg>
         <Set name="secureScheme">https</Set>
         <Set name="securePort">
             <Call class="org.forgerock.openidm.jetty.Param"  name="getProperty">
@@ -53,10 +57,24 @@
         <Call name="addCustomizer">
             <Arg><New class="org.eclipse.jetty.server.SecureRequestCustomizer"/></Arg>
         </Call>
+        <Call name="addCustomizer">
+            <Arg>
+                <New class="org.eclipse.jetty.server.ForwardedRequestCustomizer">
+                    <!-- Prevent host header changes that may occur from URL hijacking attempts -->
+                    <Set name="hostHeader">
+                        <Call class="org.forgerock.openidm.jetty.Param" name="getProperty">
+                            <Arg>openidm.host</Arg>
+                        </Call>:<Call class="org.forgerock.openidm.jetty.Param" name="getProperty">
+                        <Arg>openidm.port.https</Arg>
+                    </Call>
+                    </Set>
+                </New>
+            </Arg>
+        </Call>
     </New>
 
     <New id="mutualAuthHttpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
-        <Arg><Ref refid="httpConfig"/></Arg>
+        <Arg><Ref refid="httpSimpleConfig"/></Arg>
         <Set name="secureScheme">https</Set>
         <Set name="securePort">
             <Call class="org.forgerock.openidm.jetty.Param"  name="getProperty">
@@ -66,61 +84,37 @@
         <Call name="addCustomizer">
             <Arg><New class="org.eclipse.jetty.server.SecureRequestCustomizer"/></Arg>
         </Call>
+        <Call name="addCustomizer">
+            <Arg>
+                <New class="org.eclipse.jetty.server.ForwardedRequestCustomizer">
+                    <!-- Prevent host header changes that may occur from URL hijacking attempts -->
+                    <Set name="hostHeader">
+                        <Call class="org.forgerock.openidm.jetty.Param" name="getProperty">
+                            <Arg>openidm.host</Arg>
+                        </Call>:<Call class="org.forgerock.openidm.jetty.Param" name="getProperty">
+                        <Arg>openidm.port.mutualauth</Arg>
+                    </Call>
+                    </Set>
+                </New>
+            </Arg>
+        </Call>
     </New>
 
     <Array id="excludedCipherSuites" type="java.lang.String">
-
         <!-- EXP-RC4-MD5  -->
-        <Item>SSL_RSA_EXPORT_WITH_RC4_40_MD5</Item>
-        <Item>SSL_DH_anon_EXPORT_WITH_RC4_40_MD5</Item>
-        <Item>TLS_KRB5_EXPORT_WITH_RC4_40_MD5</Item>
-
-        <!-- EXP-EDH-RSA-DES-CBC-SHA or EXP-DHE-RSA-DES-CBC-SHA  -->
-        <Item>SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA</Item>
-
-        <!-- EXP-DES-CBC-SHA -->
-        <Item>SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA</Item>
-        <Item>SSL_RSA_EXPORT_WITH_DES40_CBC_SHA</Item>
-        <Item>SSL_DH_anon_EXPORT_WITH_DES40_CBC_SHA	</Item>
-        <Item>TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA</Item>
-
-        <!-- DES-CBC-SHA -->
-        <Item>SSL_RSA_WITH_DES_CBC_SHA</Item>
-        <Item>SSL_DHE_RSA_WITH_DES_CBC_SHA</Item>
-        <Item>SSL_DHE_DSS_WITH_DES_CBC_SHA</Item>
-        <Item>SSL_DH_anon_WITH_DES_CBC_SHA</Item>
-        <Item>TLS_KRB5_WITH_DES_CBC_SHA</Item>
-
-        <!--
-        EDH-RSA-DES-CBC-SHA or DHE-RSA-DES-CBC-SHA is excluded above
-        <Item>SSL_DHE_RSA_WITH_DES_CBC_SHA</Item>
-        -->
-
         <!-- RC4-MD5 -->
-        <Item>SSL_RSA_WITH_RC4_128_MD5</Item>
-        <Item>SSL_RSA_EXPORT_WITH_RC4_40_MD5</Item>
-        <Item>SSL_DH_anon_WITH_RC4_128_MD5</Item>
-        <Item>SSL_DH_anon_EXPORT_WITH_RC4_40_MD5</Item>
-        <Item>TLS_KRB5_WITH_RC4_128_MD5</Item>
-        <Item>TLS_KRB5_EXPORT_WITH_RC4_40_MD5</Item>
+        <Item>.*RC4.*MD5</Item>
 
         <!-- RC4-SHA  -->
-        <Item>SSL_RSA_WITH_RC4_128_SHA</Item>
-        <Item>TLS_ECDH_ECDSA_WITH_RC4_128_SHA</Item>
-        <Item>TLS_ECDH_RSA_WITH_RC4_128_SHA</Item>
-        <Item>TLS_ECDHE_ECDSA_WITH_RC4_128_SHA</Item>
-        <Item>TLS_ECDHE_RSA_WITH_RC4_128_SHA</Item>
-        <Item>TLS_ECDH_anon_WITH_RC4_128_SHA</Item>
-        <Item>TLS_KRB5_WITH_RC4_128_SHA</Item>
-        <Item>TLS_KRB5_EXPORT_WITH_RC4_40_SHA</Item>
+        <!--ECDHE-RSA-RC4-SHA -->
+        <Item>.*RC4.*SHA</Item>
 
         <!-- EDE_CBC_SHA -->
+        <!--EDH-RSA-DES-CBC-SHA or DHE-RSA-DES-CBC-SHA -->
+        <!-- EXP-EDH-RSA-DES-CBC-SHA or EXP-DHE-RSA-DES-CBC-SHA  -->
+        <!-- EXP-DES-CBC-SHA -->
+        <!-- DES-CBC-SHA -->
         <Item>.*DES.*</Item>
-
-        <!--
-        ECDHE-RSA-RC4-SHA is excluded above
-        <Item>TLS_ECDHE_RSA_WITH_RC4_128_SHA</Item>
-        -->
 
     </Array>
 
