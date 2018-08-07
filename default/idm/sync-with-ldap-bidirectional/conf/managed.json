@@ -19,9 +19,9 @@
                 "source" : "require('postDelete-idp-cleanup').removeConnectedIdpData(oldObject, resourceName, request);"
             },
             "actions" : {
-                "resetPassword": {
-                    "type": "text/javascript",
-                    "source": "require('resetPassword').sendMail(object);"
+                "resetPassword" : {
+                    "type" : "text/javascript",
+                    "source" : "require('resetPassword').sendMail(object);"
                 }
             },
             "schema" : {
@@ -89,7 +89,7 @@
                             "key" : "openidm-sym-default"
                         },
                         "scope" : "private",
-                        "isProtected": true,
+                        "isProtected" : true,
                         "usageDescription" : "",
                         "isPersonal" : false,
                         "policies" : [
@@ -141,12 +141,12 @@
                                     "type" : "string"
                                 }
                             },
-                            "order": [
+                            "order" : [
                                 "answer",
                                 "customQuestion",
                                 "questionId"
                             ],
-                            "required": []
+                            "required" : [ ]
                         }
                     },
                     "preferences" : {
@@ -163,16 +163,16 @@
                                 "description" : "Send me news and updates",
                                 "type" : "boolean"
                             },
-                            "marketing": {
+                            "marketing" : {
                                 "description" : "Send me special offers and services",
                                 "type" : "boolean"
                             }
                         },
-                        "order": [
+                        "order" : [
                             "updates",
                             "marketing"
                         ],
-                        "required": []
+                        "required" : [ ]
                     },
                     "mail" : {
                         "title" : "Email Address",
@@ -439,7 +439,7 @@
                         "isPersonal" : false,
                         "onRetrieve" : {
                             "type" : "text/javascript",
-                             "source" : "require('roles/effectiveRoles').calculateEffectiveRoles(object, 'roles');"
+                            "source" : "require('roles/effectiveRoles').calculateEffectiveRoles(object, 'roles');"
                         },
                         "items" : {
                             "type" : "object",
@@ -592,7 +592,7 @@
                             "effectiveAssignments",
                             "timestamp"
                         ],
-                        "required": []
+                        "required" : [ ]
                     },
                     "consentedMappings" : {
                         "title" : "Consented Mappings",
@@ -650,12 +650,12 @@
                 ]
             },
             "meta" : {
-              "property" : "_meta",
-              "resourceCollection" : "internal/usermeta",
-              "trackedProperties" : [
-                  "createDate",
-                  "lastChanged"
-              ]
+                "property" : "_meta",
+                "resourceCollection" : "internal/usermeta",
+                "trackedProperties" : [
+                    "createDate",
+                    "lastChanged"
+                ]
             }
         },
         {
@@ -856,7 +856,9 @@
                                 }
                             ]
                         },
-                        "notifyRelationships" : ["members"]
+                        "notifyRelationships" : [
+                            "members"
+                        ]
                     },
                     "condition" : {
                         "description" : "A conditional filter for this role",
@@ -887,7 +889,9 @@
                                 "duration"
                             ]
                         },
-                        "notifyRelationships" : ["members"]
+                        "notifyRelationships" : [
+                            "members"
+                        ]
                     }
                 },
                 "required" : [
@@ -980,9 +984,11 @@
                                 "name",
                                 "value"
                             ],
-                            "required": []
+                            "required" : [ ]
                         },
-                        "notifyRelationships" : ["roles"]
+                        "notifyRelationships" : [
+                            "roles"
+                        ]
                     },
                     "linkQualifiers" : {
                         "description" : "Conditional link qualifiers to restrict this assignment to.",
@@ -1055,6 +1061,14 @@
                     "linkQualifiers",
                     "roles"
                 ]
+            }
+        },
+        {
+            "name" : "MyCustomObject",
+            "schema" : {
+                "icon" : "fa-ambulance",
+                "title" : "Custom Object",
+                "description" : "MyDescription"
             }
         }
     ]
