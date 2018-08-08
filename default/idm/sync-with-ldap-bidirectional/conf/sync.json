@@ -76,8 +76,7 @@
             "links" : "systemLdapAccounts_managedUser",
             "onCreate" : {
                 "type" : "text/javascript",
-                "globals" : { },
-                "source" : "target.dn = 'uid=' + source.userName + ',&{userstore.basecontext}';"
+                "source" : "target.dn = 'uid=' + source.userName + ',ou=People,dc=example,dc=com';"
             },
             "properties" : [
                 {
@@ -130,15 +129,6 @@
                     "condition" : {
                         "type" : "text/javascript",
                         "source" : "!!object.telephoneNumber"
-                    }
-                },
-                {
-                    "target" : "dn",
-                    "source" : "userName",
-                    "transform" : {
-                        "type" : "text/javascript",
-                        "globals" : { },
-                        "source" : "\"uid=\" + source + \",&{userstore.basecontext}\""
                     }
                 }
             ],
