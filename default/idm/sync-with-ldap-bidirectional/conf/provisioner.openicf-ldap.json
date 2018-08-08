@@ -5,16 +5,16 @@
         "connectorName" : "org.identityconnectors.ldap.LdapConnector"
     },
     "configurationProperties" : {
-        "host" : "localhost",
-        "port" : 1389,
+        "host" : "&{userstore.host}",
+        "port" : "&{userstore.port}",
         "ssl" : false,
         "principal" : "cn=Directory Manager",
-        "credentials" : "password",
+        "credentials" : "&{userstore.password}",
         "baseContexts" : [
-            "dc=example,dc=com"
+            "&{userstore.basecontext}"
         ],
         "baseContextsToSynchronize" : [
-            "dc=example,dc=com"
+            "&{userstore.basecontext}"
         ],
         "accountSearchFilter" : null,
         "accountSynchronizationFilter" : null,
