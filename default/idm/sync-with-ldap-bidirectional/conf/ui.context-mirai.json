@@ -1,8 +1,0 @@
-{
-    "enabled" : true,
-    "urlContextRoot" : "/mirai",
-    "defaultDir" : "&{launcher.install.location}/ui/mirai",
-    "responseHeaders" : {
-        "X-Frame-Options" : "DENY"
-    }
-}
