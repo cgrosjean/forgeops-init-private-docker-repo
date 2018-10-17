@@ -1,0 +1,17 @@
+{
+  "metadata" : {
+    "realm" : "/PoC-Realm",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "PasswordCollector",
+    "entityId" : "c2493fe2-8e63-44f5-9f8f-0fccd258f86e",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "c2493fe2-8e63-44f5-9f8f-0fccd258f86e",
+    "_type" : {
+      "_id" : "PasswordCollectorNode",
+      "name" : "Password Collector",
+      "collection" : true
+    }
+  }
+}

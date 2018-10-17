@@ -1,0 +1,37 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "AuthTree",
+    "entityId" : "test",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "test",
+    "entryNodeId" : "7dcfbeb3-1708-4f08-a769-afd800d88be6",
+    "nodes" : {
+      "7dcfbeb3-1708-4f08-a769-afd800d88be6" : {
+        "nodeType" : "UsernameCollectorNode",
+        "displayName" : "Username Collector",
+        "connections" : {
+          "outcome" : "eaea4ec8-24f1-4f79-b983-7a0a168d313c"
+        }
+      },
+      "eaea4ec8-24f1-4f79-b983-7a0a168d313c" : {
+        "nodeType" : "PasswordCollectorNode",
+        "displayName" : "Password Collector",
+        "connections" : {
+          "outcome" : "a393890c-66fc-40ee-8314-af6090d81178"
+        }
+      },
+      "a393890c-66fc-40ee-8314-af6090d81178" : {
+        "nodeType" : "DataStoreDecisionNode",
+        "displayName" : "Data Store Decision",
+        "connections" : {
+          "true" : "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+          "false" : "e301438c-0bd0-429c-ab0c-66126501069a"
+        }
+      }
+    }
+  }
+}

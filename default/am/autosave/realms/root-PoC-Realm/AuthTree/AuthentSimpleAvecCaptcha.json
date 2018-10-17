@@ -1,0 +1,37 @@
+{
+  "metadata" : {
+    "realm" : "/PoC-Realm",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "AuthTree",
+    "entityId" : "AuthentSimpleAvecCaptcha",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "AuthentSimpleAvecCaptcha",
+    "entryNodeId" : "cd8f506c-15e0-475e-9dba-cd07b2d643b5",
+    "nodes" : {
+      "74ee54b0-d47b-44e9-a88c-b39813a5be18" : {
+        "nodeType" : "PageNode",
+        "displayName" : "Page Node",
+        "connections" : {
+          "outcome" : "2bd1da28-5bc7-4315-8a75-5452bbaaa3ba"
+        }
+      },
+      "cd8f506c-15e0-475e-9dba-cd07b2d643b5" : {
+        "nodeType" : "RecaptchaNode",
+        "displayName" : "reCAPTCHA",
+        "connections" : {
+          "outcome" : "74ee54b0-d47b-44e9-a88c-b39813a5be18"
+        }
+      },
+      "2bd1da28-5bc7-4315-8a75-5452bbaaa3ba" : {
+        "nodeType" : "DataStoreDecisionNode",
+        "displayName" : "Data Store Decision",
+        "connections" : {
+          "false" : "e301438c-0bd0-429c-ab0c-66126501069a",
+          "true" : "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+        }
+      }
+    }
+  }
+}

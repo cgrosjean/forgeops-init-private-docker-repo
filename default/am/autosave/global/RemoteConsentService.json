@@ -11,8 +11,8 @@
     "defaults" : {
       "clientId" : null,
       "jwksUriAS" : null,
-      "jwkStoreCacheTimeout" : 60,
       "signingKeyAlias" : null,
+      "jwkStoreCacheTimeout" : 60,
       "encryptionKeyAlias" : null,
       "jwkStoreCacheMissCacheTime" : 1,
       "consentResponseTimeLimit" : 2

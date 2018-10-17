@@ -1,0 +1,17 @@
+{
+  "metadata" : {
+    "realm" : "/PoC-Realm",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "DataStoreDecision",
+    "entityId" : "170cca86-bd8a-422d-8879-b598bc4097da",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "170cca86-bd8a-422d-8879-b598bc4097da",
+    "_type" : {
+      "_id" : "DataStoreDecisionNode",
+      "name" : "Data Store Decision",
+      "collection" : true
+    }
+  }
+}

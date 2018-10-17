@@ -16,8 +16,8 @@
       "GRANT" : true
     },
     "createdBy" : "id=dsameuser,ou=user,o=userstore",
-    "creationDate" : 1533646369299,
-    "lastModifiedBy" : "id=dsameuser,ou=user,o=userstore",
-    "lastModifiedDate" : 1533646369299
+    "creationDate" : 1539770599105,
+    "lastModifiedBy" : "id=amadmin,ou=user,o=userstore",
+    "lastModifiedDate" : 1539770600710
   }
 }

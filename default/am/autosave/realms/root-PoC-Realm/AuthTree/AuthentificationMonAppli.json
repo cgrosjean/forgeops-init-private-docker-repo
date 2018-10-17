@@ -1,0 +1,37 @@
+{
+  "metadata" : {
+    "realm" : "/PoC-Realm",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "AuthTree",
+    "entityId" : "AuthentificationMonAppli",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "AuthentificationMonAppli",
+    "entryNodeId" : "bd26cc5d-fb6d-44fb-8f90-71251835db3e",
+    "nodes" : {
+      "bd26cc5d-fb6d-44fb-8f90-71251835db3e" : {
+        "nodeType" : "UsernameCollectorNode",
+        "displayName" : "Saisie Identifiant",
+        "connections" : {
+          "outcome" : "c2493fe2-8e63-44f5-9f8f-0fccd258f86e"
+        }
+      },
+      "c2493fe2-8e63-44f5-9f8f-0fccd258f86e" : {
+        "nodeType" : "PasswordCollectorNode",
+        "displayName" : "Saisie MotDePasse",
+        "connections" : {
+          "outcome" : "170cca86-bd8a-422d-8879-b598bc4097da"
+        }
+      },
+      "170cca86-bd8a-422d-8879-b598bc4097da" : {
+        "nodeType" : "DataStoreDecisionNode",
+        "displayName" : "Vérification MotDePasse",
+        "connections" : {
+          "false" : "e301438c-0bd0-429c-ab0c-66126501069a",
+          "true" : "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+        }
+      }
+    }
+  }
+}
