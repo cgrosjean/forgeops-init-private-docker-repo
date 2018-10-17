@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : "/PoC-Realm",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "AuthTree",
+    "entityId" : "AuthentAvecChoix",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "AuthentAvecChoix",
+    "entryNodeId" : "7a205b9c-329d-4c51-881b-0f78d1944064",
+    "nodes" : {
+      "7a205b9c-329d-4c51-881b-0f78d1944064" : {
+        "nodeType" : "UsernameCollectorNode",
+        "displayName" : "Username Collector",
+        "connections" : {
+          "outcome" : "e301438c-0bd0-429c-ab0c-66126501069a"
+        }
+      }
+    }
+  }
+}

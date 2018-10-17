@@ -1,0 +1,26 @@
+{
+  "metadata" : {
+    "realm" : "/PoC-Realm",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "PageNode",
+    "entityId" : "74ee54b0-d47b-44e9-a88c-b39813a5be18",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "74ee54b0-d47b-44e9-a88c-b39813a5be18",
+    "nodes" : [ {
+      "_id" : "0cbbe51c-8437-4e69-a46d-cf13c9661da9",
+      "nodeType" : "UsernameCollectorNode",
+      "displayName" : "Username Collector"
+    }, {
+      "_id" : "f7d656bd-78a3-44b0-8234-471c9f88e15e",
+      "nodeType" : "PasswordCollectorNode",
+      "displayName" : "Password Collector"
+    } ],
+    "_type" : {
+      "_id" : "PageNode",
+      "name" : "Page Node",
+      "collection" : true
+    }
+  }
+}

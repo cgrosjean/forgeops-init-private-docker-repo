@@ -1,0 +1,17 @@
+{
+  "metadata" : {
+    "realm" : "/PoC-Realm",
+    "amsterVersion" : "6.0.0",
+    "entityType" : "UsernameCollector",
+    "entityId" : "0cbbe51c-8437-4e69-a46d-cf13c9661da9",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "0cbbe51c-8437-4e69-a46d-cf13c9661da9",
+    "_type" : {
+      "_id" : "UsernameCollectorNode",
+      "name" : "Username Collector",
+      "collection" : true
+    }
+  }
+}
